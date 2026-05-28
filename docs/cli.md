@@ -455,6 +455,7 @@ Doctor checks:
 - The model endpoint is reachable from `SIGIL_MODEL_URL`, or from the default
   local OpenAI-compatible endpoint.
 - `SIGIL_MODEL_NAME` is set when the endpoint needs an explicit model name.
+- `SIGIL_MODEL_API_KEY` is set when the endpoint requires bearer-token auth.
 - Sigil's state directory is writable.
 - The selected shell is supported.
 - The selected shell binding is installed.
@@ -506,5 +507,6 @@ SIGIL_GLOW_STYLE=notty
 SIGIL_GLOW_WIDTH=88
 SIGIL_MODEL_URL=http://127.0.0.1:8080/v1/chat/completions
 SIGIL_MODEL_NAME=local-model
+SIGIL_MODEL_API_KEY=sk-local
 SIGIL_MODEL_PATH=/path/to/model.gguf
 ```

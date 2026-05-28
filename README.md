@@ -103,6 +103,7 @@ Useful environment variables:
 ```sh
 SIGIL_MODEL_URL=http://127.0.0.1:8080/v1/chat/completions
 SIGIL_MODEL_NAME=local-model
+SIGIL_MODEL_API_KEY=sk-local
 SIGIL_MODEL_PATH=/path/to/model.gguf
 SIGIL_STATE_DIR=$HOME/.sigil
 SIGIL_ENABLE_PROMPT_MARKER=0

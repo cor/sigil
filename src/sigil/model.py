@@ -37,6 +37,20 @@ def model_path() -> str:
     return os.environ.get("SIGIL_MODEL_PATH") or "<path-to-model.gguf>"
 
 
+def model_api_key() -> str:
+    """Return the optional bearer token sent to the configured endpoint."""
+    return os.environ.get("SIGIL_MODEL_API_KEY", "").strip()
+
+
+def model_headers() -> dict[str, str]:
+    """Return HTTP headers for OpenAI-compatible model requests."""
+    headers = {"Content-Type": "application/json"}
+    api_key = model_api_key()
+    if api_key:
+        headers["Authorization"] = f"Bearer {api_key}"
+    return headers
+
+
 def endpoint_reachable(url: str) -> bool:
     """Return whether the configured endpoint accepts TCP connections."""
     parsed = urlparse(url)
@@ -80,7 +94,7 @@ def request_chat_completion(body: dict[str, Any]) -> dict[str, Any]:
     req = urllib.request.Request(
         model_url(),
         data=data,
-        headers={"Content-Type": "application/json"},
+        headers=model_headers(),
         method="POST",
     )
     try:
