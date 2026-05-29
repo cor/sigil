@@ -93,6 +93,17 @@
             };
           };
 
+          packages.sigil-shell-bindings = pkgs.stdenv.mkDerivation {
+            pname = "sigil-shell-bindings";
+            version = "0.1.0";
+
+            src = ./src/sigil/shell;
+
+            installPhase = ''
+              cp -r . $out
+            '';
+          };
+
           packages.default = self'.packages.sigil;
 
           treefmt = {
